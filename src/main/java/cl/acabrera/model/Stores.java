@@ -45,5 +45,11 @@ public class Stores {
 	@JsonBackReference //resuelve el problema de los enlaces externos anidados
 	@OneToMany(targetEntity=Staffs.class, mappedBy="store", cascade= {CascadeType.MERGE,CascadeType.REFRESH}, fetch=FetchType.LAZY)
 	private List<Staffs> staffsStoresList;
+	
+	//1:n Relación con clase Orders
+	@JsonBackReference
+	@OneToMany(targetEntity=Orders.class, mappedBy="store", cascade= {CascadeType.MERGE,CascadeType.REFRESH}, fetch=FetchType.LAZY)
+	private List<Orders> ordersStoresList;
+
 	 
 }
