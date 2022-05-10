@@ -1,11 +1,18 @@
 package cl.acabrera.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -44,6 +51,10 @@ public class Products {
 	@JoinColumn(name="category_id" )//agregar el id de la tabla en la BD
 	private Categories category;
 	
+	//1:n Relación con clase Order_items
+//	@OneToMany(targetEntity=Products.class, mappedBy="brand", cascade= {CascadeType.MERGE,CascadeType.REFRESH}, fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="product")
+	private List<OrderItems> OrderItemsProductsList;
 	
 	
 }
