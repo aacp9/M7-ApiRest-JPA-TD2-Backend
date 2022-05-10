@@ -3,8 +3,6 @@ package cl.acabrera.model;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -59,6 +57,12 @@ public class Staffs {
 	@ManyToOne
 	@JoinColumn(name="store_id")//agregar el id de la tabla en la BD
 	private Stores store;
+
+	//1:n Relación con clase Orders
+//	@JsonBackReference
+//	@OneToMany(targetEntity=Orders.class, mappedBy="staff", cascade= {CascadeType.MERGE,CascadeType.REFRESH}, fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="staff")
+	private List<Orders> ordersStaffsList;
 
 	
 	
