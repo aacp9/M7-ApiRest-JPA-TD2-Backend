@@ -1,9 +1,16 @@
 package cl.acabrera.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -33,5 +40,10 @@ public class Stores {
 
 	@Column(name="zip_code")
 	private String zipCode; 
+	
+	//1:n Relación con clase Staff
+	@JsonBackReference //resuelve el problema de los enlaces externos anidados
+	@OneToMany(targetEntity=Staffs.class, mappedBy="store", cascade= {CascadeType.MERGE,CascadeType.REFRESH}, fetch=FetchType.LAZY)
+	private List<Staffs> staffsStoresList;
 	 
 }

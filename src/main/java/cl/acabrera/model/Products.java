@@ -44,4 +44,6 @@ public class Products {
 	@JoinColumn(name="category_id" )//agregar el id de la tabla en la BD
 	private Categories category;
 	
+	
+	
 }
