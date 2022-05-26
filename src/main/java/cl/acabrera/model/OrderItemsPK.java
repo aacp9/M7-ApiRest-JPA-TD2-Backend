@@ -21,9 +21,11 @@ public class OrderItemsPK implements Serializable{//serializable: requisito para
 	
 	private static final long serialVersionUID = 1L;
 
+	//LLAVE COMPUESTA con una llave foranea (FK)
+	
 	@Column(name="order_id", insertable = false, updatable = false)
-	protected Integer orderIdFK;
+	protected Integer orderIdFK; //FK ya que es una llave foranea.
 	
 	@Column(name="item_id", insertable = false, updatable = false)
-	protected Integer itemIdFK;
+	protected Integer itemId; //sin FK ya que es una llave propia de la tabla order_items
 }
